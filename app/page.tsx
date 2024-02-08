@@ -5,7 +5,9 @@ import { redirect } from "next/navigation";
 
 export default async function Home() {
   const supabse = createServerComponentClient<Database>({ cookies });
-  const { data: tweets } = await supabse.from("tweets").select();
+  const { data: tweets } = await supabse
+    .from("tweets")
+    .select("*, profiles(*)");
   const {
     data: { session },
   } = await supabse.auth.getSession();
