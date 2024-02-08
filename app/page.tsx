@@ -4,7 +4,7 @@ import AuthButtonServer from "./component/auth-button-server";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
-  const supabse = createServerComponentClient({ cookies });
+  const supabse = createServerComponentClient<Database>({ cookies });
   const { data: tweets } = await supabse.from("tweets").select();
   const {
     data: { session },
